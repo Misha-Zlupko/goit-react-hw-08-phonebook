@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useLogin } from 'hooks/hooks';
 
 export const LoginForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
   useLogin();
@@ -15,7 +14,6 @@ export const LoginForm = () => {
   const handleSubmmit = e => {
     e.preventDefault();
     dispatch(logIn(values));
-    setIsLoading(true);
   };
   return (
     <div>
