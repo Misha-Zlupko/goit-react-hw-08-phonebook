@@ -6,7 +6,7 @@ import { useLogin } from 'hooks/hooks';
 export const ContactList = () => {
   const dispatch = useDispatch();
   const getFilteredContacts = useSelector(selectFiltersContacts);
-  useLogin();
+  // useLogin();
 
   const handleDelete = id => {
     dispatch(deliteContact(id));

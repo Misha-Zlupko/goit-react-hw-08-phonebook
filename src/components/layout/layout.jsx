@@ -10,7 +10,7 @@ export const Layout = () => {
       {!isContactsLoaded && <Link to="/login">logIn</Link>}
       {!isContactsLoaded && <Link to="/register">Register</Link>}
       <div>
-        <Outlet></Outlet>
+        <Outlet />
       </div>
     </div>
   );

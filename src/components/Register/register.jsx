@@ -12,7 +12,7 @@ export const RegisterForm = () => {
   const [values, setValues] = useState(initialState);
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-  useLogin();
+  // useLogin();
   const handleChenge = e => {
     const { value, name } = e.target;
     setValues(prev => ({ ...prev, [name]: value }));
