@@ -8,7 +8,7 @@ import { Layout } from './layout/layout';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';
 import { PrivateRoute } from './PrivateComponents';
-import { RestrictedRoute } from './RestrictedRoute';
+import { PublicRoute } from './RestrictedRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -25,8 +25,8 @@ export const App = () => {
           <Route
             path="/register"
             element={
-              <RestrictedRoute
-                redirectTo="contacts"
+              <PublicRoute
+                redirectTo="/contacts"
                 component={<RegisterForm />}
               />
             }
@@ -34,10 +34,7 @@ export const App = () => {
           <Route
             path="/login"
             element={
-              <RestrictedRoute
-                redirectTo="contacts"
-                component={<LoginForm />}
-              />
+              <PublicRoute redirectTo="/contacts" component={<LoginForm />} />
             }
           />
 
