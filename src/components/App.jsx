@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Contacts } from './Contacts/contacts';
 import { UserMenu } from './UserMenu/UserMenu';
 import { LoginForm } from './Login/login';
@@ -13,7 +13,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 export const App = () => {
   const dispatch = useDispatch();
   const isRefrsing = useSelector(state => state.auth.isRefrsing);
-  const status = useSelector(state => state.auth.isLoggedIn);
+  // const status = useSelector(state => state.auth.isLoggedIn);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);

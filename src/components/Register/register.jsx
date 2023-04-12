@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-import { useLogin } from 'hooks/hooks';
+// import { useLogin } from 'hooks/hooks';
 
 const initialState = {
   name: '',
