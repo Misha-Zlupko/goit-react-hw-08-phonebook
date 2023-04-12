@@ -1,16 +1,30 @@
+import { Route, Routes } from 'react-router-dom';
+import { Contacts } from './Contacts/contacts';
+import { UserMenu } from './UserMenu/UserMenu';
+import { LoginForm } from './Login/login';
+import { RegisterForm } from './Register/register';
+import { useDispatch, useSelector } from 'react-redux';
+import { Layout } from './layout/layout';
+import { useEffect } from 'react';
+import { refreshUser } from 'redux/auth/operations';
+
 export const App = () => {
+  const dispatch = useDispatch();
+  const status = useSelector(state => state.auth.isLoggedIn);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch, status]);
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <UserMenu />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/contacts" element={<Contacts />} />
+        </Route>
+      </Routes>
     </div>
   );
 };
