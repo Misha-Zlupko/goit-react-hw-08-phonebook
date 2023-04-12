@@ -1,10 +1,15 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-export const ProtectedRoute = () => {
-  const token = useSelector(state => state.auth.token);
-  const user = useSelector(state => state.auth.user);
-  if (!token || !user) {
-    return <Navigate to="/login" replace />;
-  }
+/**
+ * - If the route is private and the user is logged in, render the component
+ * - Otherwise render <Navigate> to redirectTo
+ */
+
+export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const isRefreshing = useSelector(state => state.auth.isRefreshing);
+  const shouldRedirect = !isLoggedIn && !isRefreshing;
+
+  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
 };
