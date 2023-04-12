@@ -6,6 +6,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 export const useLogin = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth.isLoggedIn);
+  console.log(user);
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {

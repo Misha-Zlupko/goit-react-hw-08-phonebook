@@ -15,10 +15,10 @@ export const ContactList = () => {
   return (
     <div>
       <ul>
-        {getFilteredContacts.map(({ name, phone, id }) => (
+        {getFilteredContacts.map(({ name, number, id }) => (
           <li key={name}>
             <p>
-              {name}: {phone}
+              {name}: {number}
             </p>
             <button onClick={() => handleDelete(id)}>Delite</button>
           </li>
