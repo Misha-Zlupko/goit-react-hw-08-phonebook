@@ -44,12 +44,10 @@ const usersSlice = createSlice({
       state.contacts.isLoading = true;
     },
     [deliteContact.fulfilled](state, action) {
-      state.contacts.isLoading = false;
-      state.contacts.error = null;
-      const index = state.items.findIndex(
-        task => task.id === action.payload.id
+      state.isLoading = false;
+      state.contacts.items = state.contacts.items.filter(
+        item => item.id !== action.payload.id
       );
-      state.contacts.items.splice(index, 1);
     },
     [deliteContact.rejected](state, action) {
       state.contacts.isLoading = false;
