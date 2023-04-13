@@ -18,12 +18,12 @@ const usersSlice = createSlice({
   },
   extraReducers: {
     [fetchContacts.pending]: state => {
-      state.isLoading = true;
+      state.contacts.isLoading = true;
     },
     [fetchContacts.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
+      state.contacts.isLoading = false;
+      state.contacts.error = null;
+      state.contacts.items = action.payload;
     },
     [fetchContacts.rejected]: state => {
       state.isLoading = true;

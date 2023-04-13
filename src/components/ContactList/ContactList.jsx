@@ -3,10 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deliteContact } from '../../redux/contacts/operations';
 import { selectFiltersContacts } from 'redux/contacts/selectors';
 // import { useLogin } from 'hooks/hooks';
+import { fetchContacts } from '../../redux/contacts/operations';
+import { useEffect } from 'react';
 export const ContactList = () => {
   const dispatch = useDispatch();
   const getFilteredContacts = useSelector(selectFiltersContacts);
-  // useLogin();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const handleDelete = id => {
     dispatch(deliteContact(id));
